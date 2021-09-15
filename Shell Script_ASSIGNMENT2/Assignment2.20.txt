@@ -1,0 +1,57 @@
+Create a script that accepts a command line parameter intended to be the name of a directory. With the script, attempt to change to the indicated directory, be sure to redirect errors to /dev/null on the command as we will be providing our own messaging.
+
+Test the results of the command to change directories. If it was successful, indicate success and display the contents of the directory. If it was not successful, indicate we cannot change directories and exit to the terminal with a custom exit code (less than 200).
+
+
+
+
+#!/bin/bash
+echo "Change to a directory and list the contents"
+DIRECTORY=$1
+cd $DIRECTORY 2>/dev/null
+if [ "$?" = "0" ]; then
+echo "We can change into the directory $DIRECTORY, and here are the contents"
+echo "`ls -al`"
+else
+echo "Cannot change directories, exiting with an error and no listing"
+exit 111
+fi
+
+Terminal OUTPUT:-
+
+
+kajal@kajal:~/Desktop/Assignment2$ sh Assignment2.20.sh
+Change to a directory and list the contents
+We can change into the directory , and here are the contents
+total 116
+drwxr-xr-x 18 kajal kajal 4096 Aug  8 20:45 .
+drwxr-xr-x  3 root  root  4096 Aug  6 10:56 ..
+drwxrwxr-x  2 kajal kajal 4096 Aug  7 19:46 Assignment2
+-rw-------  1 kajal kajal 2533 Aug  8 18:12 .bash_history
+-rw-r--r--  1 kajal kajal  220 Aug  6 10:56 .bash_logout
+-rw-r--r--  1 kajal kajal 3771 Aug  6 10:56 .bashrc
+drwx------ 13 kajal kajal 4096 Aug  6 11:24 .cache
+drwxr-xr-x 13 kajal kajal 4096 Aug  7 12:06 .config
+drwxr-xr-x  3 kajal kajal 4096 Aug  7 19:56 Desktop
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Documents
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Downloads
+-rw-rw-r--  1 kajal kajal   56 Aug  7 20:14 .gitconfig
+drwx------  3 kajal kajal 4096 Aug  8 17:37 .gnupg
+drwxr-xr-x  3 kajal kajal 4096 Aug  6 11:15 .local
+drwx------  5 kajal kajal 4096 Aug  6 11:24 .mozilla
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Music
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Pictures
+-rw-r--r--  1 kajal kajal  807 Aug  6 10:56 .profile
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Public
+drwx------  2 kajal kajal 4096 Aug  6 11:17 .ssh
+-rw-rw-r--  1 kajal kajal  331 Aug  7 13:32 ssh1.sh
+-rw-r--r--  1 kajal kajal    0 Aug  6 11:20 .sudo_as_admin_successful
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Templates
+drwxrwxr-x  2 kajal kajal 4096 Aug  8 16:24 user
+-rw-rw-r--  1 kajal kajal   47 Aug  8 16:26 user.sh
+-rw-r-----  1 kajal kajal    5 Aug  8 20:44 .vboxclient-clipboard.pid
+-rw-r-----  1 kajal kajal    5 Aug  8 20:44 .vboxclient-display-svga-x11.pid
+-rw-r-----  1 kajal kajal    5 Aug  8 20:44 .vboxclient-draganddrop.pid
+-rw-r-----  1 kajal kajal    5 Aug  8 20:44 .vboxclient-seamless.pid
+drwxr-xr-x  2 kajal kajal 4096 Aug  6 11:15 Videos
+kajal@kajal:~/Desktop/Assignment2$

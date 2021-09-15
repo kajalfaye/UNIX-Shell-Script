@@ -1,0 +1,211 @@
+Assignment-8
+
+1. Write a shell script to list all the files of the current directory having read and write permission to the user.
+
+ANSWER:-
+
+for File in *
+do 
+if [ -r $File -a -w  $File ]
+then
+echo "$File has read and write permissions"
+fi
+done
+echo "Enter a name: \c"
+read fname
+if [ -d $fname ] 
+then
+ls $fname
+echo "This is a directory"
+
+fi
+if [ -f $fname ] 
+then
+cat < $fname
+echo "This is a file"
+fi
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment8$ sh que1.sh
+que1.sh has read and write permissions
+que2.sh has read and write permissions
+que3.sh has read and write permissions
+que4.sh has read and write permissions
+que5.sh has read and write permissions
+Enter a name: que4.sh
+echo -n "Enter number: "
+read n
+
+len=1 
+len=$(echo $n | wc -c)
+len=$(( $len - 1 ))
+     echo "Your number $n in words :"	  
+for f in $len
+
+do
+   # get one digit at a time
+    num=$(echo $n | cut -c $len)
+   # use case control structure to find digit equivalent in words 
+    case $num in
+        0) echo -n "zero " ;;
+        1) echo -n "one " ;;
+        2) echo -n "two " ;;
+        3) echo -n "three " ;;
+        4) echo -n "four " ;;
+        5) echo -n "five " ;;
+        6) echo -n "six " ;;
+        7) echo -n "seven " ;;
+        8) echo -n "eight " ;;
+        9) echo -n "nine " ;;
+    esac
+done
+echo " "
+ 
+
+This is a file
+
+
+2. Write a shell script to checks if name given is file or directory and if it is file then it should display content and if it is a directory then it should display the list.
+
+ANSWER:-
+
+echo "Enter a name: \c"
+read fname
+if [ -d $fname ] 
+then
+ls $fname
+echo "This is a directory"
+
+fi
+if [ -f $fname ] 
+then
+cat < $fname
+echo "This is a file"
+fi
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment8$ sh que2.sh
+Enter a name: que4.sh
+echo -n "Enter number: "
+read n
+
+len=1 
+len=$(echo $n | wc -c)
+len=$(( $len - 1 ))
+     echo "Your number $n in words :"	  
+for f in $len
+
+do
+   # get one digit at a time
+    num=$(echo $n | cut -c $len)
+   # use case control structure to find digit equivalent in words 
+    case $num in
+        0) echo -n "zero " ;;
+        1) echo -n "one " ;;
+        2) echo -n "two " ;;
+        3) echo -n "three " ;;
+        4) echo -n "four " ;;
+        5) echo -n "five " ;;
+        6) echo -n "six " ;;
+        7) echo -n "seven " ;;
+        8) echo -n "eight " ;;
+        9) echo -n "nine " ;;
+    esac
+done
+echo " "
+
+This is a file
+
+
+3. Write a shell script to accept two filenames and check if both exits. If second file exists then append the content of first file to second file.
+
+ANSWER:-
+
+echo "enter 1st file name"
+read fname
+echo " enter 2nd file name"
+read fname2
+if [ -f $fname -a -f $fname2 ]
+then
+ cat $fname >> $fname2
+ echo "Copied"
+else
+echo "file not exist"
+fi
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment8$ sh que3.sh
+enter 1st file name
+que1.sh
+ enter 2nd file name
+que2.sh
+Copied
+
+
+4. Write a shell script to input a number & display in words.
+
+ANSWER:-
+
+echo -n "Enter number: "
+read n
+
+len=1 
+len=$(echo $n | wc -c)
+len=$(( $len - 1 ))
+     echo "Your number $n in words :"	  
+for f in $len
+
+do
+   # get one digit at a time
+    num=$(echo $n | cut -c $len)
+   # use case control structure to find digit equivalent in words 
+    case $num in
+        0) echo -n "zero " ;;
+        1) echo -n "one " ;;
+        2) echo -n "two " ;;
+        3) echo -n "three " ;;
+        4) echo -n "four " ;;
+        5) echo -n "five " ;;
+        6) echo -n "six " ;;
+        7) echo -n "seven " ;;
+        8) echo -n "eight " ;;
+        9) echo -n "nine " ;;
+    esac
+done
+echo " "
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment8$ sh que4.sh
+Enter number: 4
+Your number 4 in words :
+four  
+
+
+5. Write a shell script to input a file name and display rights.
+
+ANSWER:-
+
+echo -n "enter"
+read file
+[ -w $file ] && W="write = Yes" || w="write = No "
+[ -x $file ] && X="execute = Yes" || X="execute = No "
+[ -r $file ] && R="read = Yes" || R="read = No "
+echo "$file permissions"
+echo "$W"
+echo "$R"
+echo "$X"
+
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment8$ sh que5.sh
+enter que3.sh       
+que3.sh permissions
+write = Yes
+read = Yes
+execute = No 
+

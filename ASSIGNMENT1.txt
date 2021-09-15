@@ -1,0 +1,380 @@
+Assignment 1 : Basic Unix Command line
+Name : Kajal B. Faye
+
+1.List the contents of a directory and their attributes
+- ls command.
+
+
+2.Long list the content with file, directory ownership, permissions,sizes, etc..
+- ls -l. The -l option signifies the long list format. This shows a lot more information presented to the user than the standard command.
+
+
+3.Display the size of the file in human readable format
+- ls command displays file size in number of bytes by default. To get a more human readable output, -h option can be used, which translates bytes into KB, MB, GB.
+
+
+4.Show all files and folders including hidden one
+- ls -a will list all files including hidden files.
+
+
+5.list directories recursively
+- ls -R or find or du -a . are the commands used to list directories recursively.
+
+
+6.Sort the files by size with largest at the top
+- ls -laS is used to list all files and sort them by size (biggest to smallest in size).
+
+
+7.Sort the files by last time modified displaying the newest first.
+- ls -t command.
+
+
+8.Display the location of a program/command, where it is installed.
+- echo $PATH command or cmd command.
+
+
+9.Which command is used to switch directory from one to another
+- The cd command, also known as chdir (change directory), is a command-line shell command used to change the current working directory.
+
+
+10.List all the environment variables set for the current shell environment
+- env, printenv, set, export.
+
+
+11.Did you notice something in the output of "env" command?
+- It prints the list of current environment variables.
+
+
+12.Which command is used to print the text or any variables value in the Console/Terminal?
+- The echo command and the printf command is used to print the output on the console.
+
+
+13.Print the value of the env variable "PATH" on the console
+- $env:PATH
+
+
+14.Is linux a case-sensitive operating system?
+- YES. Linux is case sensitive because 'a' and 'A' are different as far as the OS is concerned.
+
+
+15.Is, "Ls" same as "ls"?
+- yes.
+
+
+16.Display your currently logged in user
+- who command – Display information about users who are currently logged in.
+
+
+17.how do you change the currently logged in user to another user?
+- su command is used to change the current logged in user to another user.
+
+
+18.Which command is used to leave a shell environment that you are currently logged in to?
+- exit command in linux is used to exit the shell where it is currently running.
+
+
+19.How do you reboot the system?
+- To reboot the Linux system from a terminal session, sign in or “su”/”sudo” to the “root” account. Then type “ sudo reboot ” to reboot the box. Wait for some time and the Linux server will reboot itself.
+
+
+20.How do you shutdown the system?
+- To shut down the system from a terminal session, sign in or "su" to the "root" account. Then type ``/sbin/shutdown -r now''.
+ 
+
+21.Display all the major running processes in the system
+- ps Command. 
+
+
+22.Understand the output of command used in above question of displaying processes, explain the meaning of each column and what data it displays?
+-
+
+23.Display the name of the system kernel
+- uname -s command.
+
+
+24.display the kernel release number
+- uname -r command.
+
+
+25.display teh machine type of the current kernel
+- uname -m command or uname -p command.
+
+
+26.Display the name of the operating system that the kernel is running on
+- uname -o command.
+
+
+27.Display all info that uname command can show.
+- uname -a command.
+
+
+28.Display the name of directory that you are currently pointing to
+- pwd command
+
+
+29.change the current directory to another directory that you have in your system.
+- cd /
+
+
+30.Go up one directory
+- cd ..
+
+
+31.Return to last directory
+- cd -
+
+
+32.change the current directory to home(logged in user's) directory
+- cd ~
+
+
+33.How to check all the command used from the prompt (Command History)
+- history command 
+
+
+34.In which file the history of commands are stored in?
+- The history is stored in the ~/. bash_history file.
+
+
+35.How many lines of history does the system keep and from where you can change it?
+-
+
+36.How can you modify bash's history behaviour
+- Bash by default only saves the session to the bash history file once the session ends. To change this default behavior and make it to instantly save each command you have executed, you can make use of PROMPT_COMMAND. Now whenever you execute any command, it will be immediately added to the history file.
+
+
+37.Display all the commands entered so far, now, try to run a particular command from the history list without typing that command.
+- Ctrl+R
+
+
+38.What are the different types of shell and where are they used and how do we use them?
+- 1)The C Shell – Denoted as csh. It incorporated features such as aliases and command history. It includes helpful programming features like built-in arithmetic.
+  2)The Bourne Shell – Denoted as sh. It is the original UNIX shell. It lacks features for interactive use like the ability to recall previous commands. It also lacks built-in arithmetic and logical expression handling.
+  3)The Korn Shell - It is denoted as ksh. It is a superset of the Bourne shell. It includes features like built-in arithmetic and C-like arrays, functions, and string-manipulation facilities.
+  4)GNU Bourne-Again Shell – Denoted as bash. It is compatible to the Bourne shell. It includes features from Korn and Bourne shell.
+
+
+39.What is the difference between login shell and non-login shell?
+- If the output is the name of our shell, prepended by a dash, then it is a login shell. For example -bash, -su etc. A Non login shell is started by a program without a login. ... For example, for a Bash shell it will be simply bash.
+
+
+40.How do we start login shell and non-login shell?
+- If the output is the name of our shell, prepended by a dash, then it is a login shell. For example -bash, -su etc. A Non login shell is started by a program without a login. In this case, the program just passes the name of the shell executable.
+
+
+41.What happens when you start a login shell (which files are read and used and Why)?
+- When Bash is invoked as an interactive login shell, or as a non-interactive shell with the --login option, it first reads and executes commands from the file /etc/profile , if that file exists. ... The --noprofile option may be used when the shell is started to inhibit this behavior.
+
+
+42.What happens when you start a non-login shell (Which files are read and used and Why)?
+- bashrc are files containing shell commands that are run when Bash is invoked. . bash_profile is read and executed on interactive login shells, while . bashrc on non-login shells.
+
+
+43.What are Shell Configuration Files, why do we need it?
+- Shell configuration files are executed automatically when you log in and. out of a shell. They initialize and configure a shell upon login and. perform cleanup operations upon logout.
+
+
+44.Explain the Order of file usage from the system/user's home directory when user logs in to the System.
+-
+
+45.What are Shell Variables, list major shell variables and what do they represent?
+- A shell variable is a variable that is available only to the current shell. In contrast, an environment variable is available system wide and can be used by other applications on the system. ... It processes the commands entered on the command line or read from a shell script file.
+
+
+46.How we see all our env variables?
+- printenv command.
+
+
+47.How we see all env variables in alphabical order?
+- get-childitem env:* 
+
+
+48.What Format does the env var and its values are stored?
+-
+
+49.How do you create your own varible?
+- To create a variable, you just provide a name and value for it. Your variable names should be descriptive and remind you of the value they hold. A variable name cannot start with a number, nor can it contain spaces
+
+
+50.How do you start a new bash shell?
+- nano myscript.sh
+
+51.Difference between Local/Shell variables to Global Variable
+- Normally all our variables are local. Local variable can be used in same shell, if you load another copy of shell (by typing the /bin/bash at the $ prompt) then new shell ignored all old shell's variable. Global shell defined as: "You can copy old shell's variable to new shell (i.e. first shells variable to seconds shell), such variable is know as Global Shell variable."
+
+
+52.Making a variable accessible from other the shell in the system.
+- The export command is used to make variables or functions in the current shell environment also available to child processes of the current shell (e.g. a subshell).
+
+53.Show the real life use case of exporting a variable
+- export is bash shell BUILTINS commands, which means it is part of the shell. It marks an environment variables to be exported to child-processes.
+export [-f] [-n] [name[=value] ...] or export -p
+
+54.Convert the above script file into a command, The file should run with "myappp" instead of "myapp.sh"
+-
+
+55.What is Globbing? Explain in depth with examples?
+- Bash does not support native regular expressions like some other standard programming languages. The Bash shell feature that is used for matching or expanding specific types of patterns is called globbing. Globbing is mainly used to match filenames or searching for content in a file. Globbing uses wildcard characters to create the pattern. The most common wildcard characters that are used for creating globbing patterns are described below.
+Question mark – (?)
+‘?’ is used to match any single character. You can use ‘?’ for multiple times for matching multiple characters.
+
+Example: Suppose, you want to search those text filenames whose names are 4 characters long and extension is .txt. You can apply globbing pattern by using ‘?’ four times to do this task.
+
+Find out the list of all files and folder of the current directory.
+
+$ ls –l
+Run the following command search those files whose names are four characters long and unknown.
+
+$ ls -l ????.txt
+
+
+56.List all entries with extension ".sh"
+- find / -user user_name | grep "*.sh"
+
+
+57.List all entries with numbers in it.
+- ls -al | grep "[0-9].php"
+
+
+58.List all entries that starts with a character and ends with a number
+- grep -E "^a.*n$" filename
+
+
+59.List all entries that name length more than 5 characters
+- ls -d /tmp/???? or find /tmp -type f -size 5c.
+
+
+60.What is Quoting? and Why do we need it?
+- Quoting is used to remove the special meaning of certain characters or words to the shell. Quoting can be used to disable special treatment for special characters, to prevent reserved words from being recognized as such, and to prevent parameter expansion.
+
+
+61.Write few(minimum 3) unique examples that shows, how a particular problem is solved using Quoting.
+- 1) Quoting a single character with the backslash: You can prevent the shell from interpreting a character by placing a backslash ("\") in front of it. You can list the file using this command:
+
+ls *\**
+And here's a shell script that can delete any files that contain an asterisk:
+echo This script removes all files that 
+echo contain an asterisk in the name.
+echo
+echo Are you sure you want to remove these files\?
+rm -i *\**
+
+The backslash was also necessary before the question mark, which is also a shell meta-character. Without it, the shell would look for all files that match the pattern "files?." If you had the files "files1" and "files2" the script would print out
+
+
+Are you sure you want to remove these files1 files2
+
+which is not what you want. This is a example where's it's better to use quotes when in doubt. 
+
+The backslash is the "strongest" method of quotation. It works when every other method fails. If you want to place text on two or more lines for readability, but the program expects one line, you need a line continuation character. Just use the backslash as the last character on the line:
+
+% echo This could be \
+a very \
+long line\!
+This could be a very long line!
+%
+
+This escapes or quotes the end of line character, so it no longer has a special meaning. In the above example, I also put a backslash before the exclamation point. This is necessary if you are using the C shell, which treats the "!" as a special character. If you are using some other shell, it might not be necessary.
+ 
+  2) Strong Quoting with the Single Quotes
+When you need to quote several character at once, you could use several backslashes:
+
+% echo a\ \ \ \ \ \ \ b
+
+(There are 7 spaces between 'a' and 'b'.) This is ugly but works. It is easier to use pairs of quotation marks to indicate the start and end of the characters to be quoted:
+
+% echo 'a       b'
+
+Inside the single quotes, you can include almost all meta-characters:
+
+% echo 'What the *heck* is a $ doing here???'
+What the *heck* is a $ doing here???
+
+The above example uses asterisks, dollar signs, and question marks meta-characters. The single quotes should be used when you want the text left alone. Note - If you are using the C shell, the "!" character may need a backslash before it. It depends on the characters next to it. If it is surrounded by spaces, you don't need to use a backslash.
+
+  3) Quotes within Quotes
+While having two types of quotes (three if you count the backslash) might seem confusing, in reality it provides you with several ways to solve the same problems. You can put either quotes inside the other. If you want to quote single quotes, use double quotes around it. To quote double quotes, use single quotes. Heck, it's easier to show you:
+
+% echo "Don't do that"
+Don't do that
+% echo 'The quote of the day is: "TGIF"'
+The quote of the day is: "TGIF"
+%
+
+
+62.How do you find a particular files/directories based on a particular search criteria?
+HINT:- look for commands -> locate, find and whereis
+- whereis can be instructed to search only for the absolute path of the binary using -b switch. The search may be performed only in the directories listed after -B switch. Names after -f specify all the binaries for which the information needs to be obtained.
+
+
+63.Write major difference between locate, find and whereis?
+- Big difference is that find searches real files recursively down a given directory, while locate searches a database without requiring specific directory. Thus, if you have saved a file before updating database, find will find it , but locate won't.
+
+
+64.How Globbing is different from locate, find and whereis?
+- Big difference is that find searches real files recursively down a given directory, while locate searches a database without requiring specific directory. Thus, if you have saved a file before updating database, find will find it , but locate won't.
+
+
+65.Explain the Linux File System.
+- A Linux file system is a structured collection of files on a disk drive or a partition. A partition is a segment of memory and contains some specific data. In our machine, there can be various partitions of the memory. It stores the data on hard disks (HDD) or some equivalent storage type.
+
+
+66.Explain absolute and Relative Paths
+- An absolute path is defined as specifying the location of a file or directory from the root directory(/). In other words,we can say that an absolute path is a complete path from start of actual file system from / directory. Relative path is defined as the path related to the present working directly(pwd). It starts at your current directory and never starts with a / .
+
+
+67.What are the different ways of creating a File in linux System? Write an example of each and the difference between them.
+- 1. cat command - cat >file1
+This command creates a new file file1 (in write mode) if it doesn’t exist in the present working directory. If any file with file name file1 exists in the current directory then it is overwritten. 
+
+  2. touch command - We can create an empty file (or multiple empty files) using this command. But its main purpose is to change or update the time-stamp of a file. Major operations that can be done using it are as follows:
+Create a file
+
+touch filea      
+cat filea
+
+  3. vi command
+Its main function is to edit files. It is commonly used by programmers to edit the textual content of any file on vi text editor. Major operations that can be done using it are as follows:
+
+Create a file
+
+vi file_1
+This command creates a new file file_1 and opens it on the vi text editor if it doesn’t exist in the present working directory. If a file with the file name file_1 exists in the current directory then this command just opens the file on the vi text editor.
+
+  4.echo Command
+The echo command will duplicate whatever you specify in the command, and put the copy into a file.
+echo ‘Random sample text’ > test4.txt
+
+
+68.In how many ways we can delete the files from linux system? write an example of each and teh difference between them.
+- The simplest case is deleting a single file in the current directory. Type the rm command, a space, and then the name of the file you want to delete.
+
+rm file_1.txt
+If the file is not in the current working directory, provide a path to the file’s location.
+
+rm ./path/to/the/file/file_1.txt
+You can pass more than one filename to rm. Doing so deletes all of the specified files.
+
+rm file_2.txt file_3.txt
+Wildcards can be used to select groups of files to be deleted. The * represents multiple characters and the ? represents a single character. This command would delete all of the png image files in the current working directory.
+
+rm *.png
+This command would delete all files that have a single character extension. For example, this would delete File.1 and File.2, but not File.12.
+
+rm *.?
+If a file is write-protected you will be prompted before the file is deleted. You must respond with y or n and press “Enter.”
+
+To reduce the risk of using rm with wildcards use the -i (interactive) option. This requires you to confirm the deletion of each file.
+
+rm -i *.dat
+
+
+69.Archiving files using linux command, write a command to archive set of files from linux commands.
+- tar [options] [archive-file] [file or directory to be archived]
+
+
+70.Extract the archived files from the above step.
+- Extracting a gzip tar Archive *.tar.gz using option -xvzf : This command extracts files from tar archived file.tar.gz files.  
+
+$ tar xvzf file.tar.gz
+

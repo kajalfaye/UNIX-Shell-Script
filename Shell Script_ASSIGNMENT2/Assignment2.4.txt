@@ -1,0 +1,22 @@
+Create a simple script that does the following:
+
+Echo a full sentence to the terminal
+Echo a different full sentence, but redirect it to /dev/null
+
+Run and display the results and make sure the statements appear where intended.
+
+
+
+
+
+#!/bin/bash
+echo "This is displaying on the console"
+echo "This is going into the black hole" >> /dev/null
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/Assignment2$ sh Assignment2.4.sh
+This is displaying on the console
+kajal@kajal:~/Desktop/Assignment2$ 
+
+

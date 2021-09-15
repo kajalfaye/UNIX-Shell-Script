@@ -1,0 +1,197 @@
+Assignment-4
+
+1. Write a shell script to find out how many file and directory are their in current directory. Also list the file and directory name separately.
+
+ANSWER:-
+
+echo "derectories is: "
+ls -l '$pwd' | grep ^d | wc -l
+ls -d */
+echo "file is: "
+ls -l '$pwd' | grep ^- |wc -l
+ls -l | grep ^-
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment4$ sh que1.sh
+derectories is: 
+ls: cannot access '$pwd': No such file or directory
+0
+ls: cannot access '*/': No such file or directory
+file is: 
+-rw-rw-r-- 1 kajal kajal  200 Sep  5 19:10 database.txt
+-rw-rw-r-- 1 kajal kajal  127 Sep  8 16:37 que1.sh
+-rw-rw-r-- 1 kajal kajal 1194 Sep  5 19:13 que2.sh
+-rw-rw-r-- 1 kajal kajal  272 Sep  3 17:40 que4.sh
+-rw-rw-r-- 1 kajal kajal  102 Sep  5 19:04 que5.sh
+-rw-rw-r-- 1 kajal kajal   76 Sep  8 16:36 student.txt
+-rw-rw-r-- 1 kajal kajal  200 Sep  5 19:14 Student.txt
+-rw-rw-r-- 1 kajal kajal   18 Sep  5 19:01 test.txt
+
+
+2. Write a shell script to create a menu driven program for adding, deletion or finding a record in a database. Database should have the field like rollno, name, semester and marks of three subjects. Last option of the menu should be to exit the menu.
+
+ANSWER:-
+
+echo "Enter name of database :"
+read db
+i="yes"
+
+ 
+
+echo ">>>>>>>>>WELCOME TO THE $db DATA BASE<<<<<<<<<<<<<<"
+while [ $i = "yes" ]
+do
+
+echo "1.View the $db  database"
+echo "2.View Specific Records of $db database"
+echo "3.Add Records in $db database "
+echo "4.Delete Records from $db database"
+echo "5.Exit "
+echo "Enter your choice "
+read choice
+
+ 
+
+    case $choice in 
+        1) cat $db ;;
+        
+        2)echo "Enter roll no of that student: " 
+          read rn
+          grep -i "$rn" $db;;
+        3)echo "Enter roll no: "
+          read rn
+          echo "Enter name: "
+          read name
+          echo "Enter Semester: "
+          read sem
+          echo "Marks in English"
+          read eng
+          echo "Marks in History"
+          read hist
+          echo "Marks in Geography"
+          read geo
+          echo " $rn     $name    $sem    $eng    $hist    $geo" >>$db;;
+        4)echo "Enter roll no of student whose records to be deleted:  "
+           read rn
+           grep -v "$rn" $db 
+           cat db;;
+        5)exit;;
+          *)echo "Invalid choice";;
+           
+    esac
+
+ 
+
+echo "Do u want to continue ?"
+read i
+if [ "$i" != "yes" ]
+then
+    exit
+fi
+done  
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment4$ sh que2.sh
+Enter name of database :
+student.txt
+>>>>>>>>>WELCOME TO THE student.txt DATA BASE<<<<<<<<<<<<<<
+1.View the student.txt  database
+2.View Specific Records of student.txt database
+3.Add Records in student.txt database 
+4.Delete Records from student.txt database
+5.Exit 
+Enter your choice 
+1
+ 12     kajal    7    80    86    57
+Do u want to continue ?
+yes
+1.View the student.txt  database
+2.View Specific Records of student.txt database
+3.Add Records in student.txt database 
+4.Delete Records from student.txt database
+5.Exit 
+Enter your choice 
+3
+Enter roll no: 
+10
+Enter name: 
+khushbu
+Enter Semester: 
+7
+Marks in English
+78
+Marks in History
+80
+Marks in Geography
+63
+Do u want to continue ?
+yes
+1.View the student.txt  database
+2.View Specific Records of student.txt database
+3.Add Records in student.txt database 
+4.Delete Records from student.txt database
+5.Exit 
+Enter your choice 
+1
+ 12     kajal    7    80    86    57
+ 10     khushbu    7    78    80    63
+Do u want to continue ?
+no
+kajal@kajal:~/Desktop/SS_Assignment/Assignment4$ 
+
+
+3. Write a shell script to accept the employee name from the user and display appropriate message. Assume employee is working on a single project. Employee project details are stored in the file proj.dat and employee data are stored in
+emp.dat
+proj.dat emp.dat
+emp_no int emp_no int
+proj_no int proj_no int
+dayswork int name char
+duration int
+if message
+duration = dayswork <name>, Today is last day of project.
+duration < dayswork <name>, you are delaying the project.
+daysremaing <= 30 <name>, hurry up only <days> are remaining.
+daysremaing > 30 <name>, you have still <days> to finish the project.
+
+ANSWER:-
+
+Terminal OUTPUT:-
+
+
+4. Write a shell scripts to count number of vowels in file ignoring the case.
+
+ANSWER:-
+
+vowels=0
+
+while IFS="\n" read line
+do
+    length=${#line}
+    if [ $length -eq 1 ] ; then
+    continue
+    fi ;
+    new_line=$(echo "$line" | tr -d 'aeiouAEIOU')
+    new_length=${#new_line}
+    vowel=$(($vowel + $length - $new_length))
+done < test.txt
+
+echo Vowels=$vowel
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment4$ cat test.txt
+My name is kajal.
+kajal@kajal:~/Desktop/SS_Assignment/Assignment4$ sh que4.sh
+Vowels=5
+kajal@kajal:~/Desktop/SS_Assignment/Assignment4$ 
+
+
+5. Write a shell program which will work like wc.
+
+ANSWER:-
+
+#!/bin/bash
+echo $(( $( grep -c '^' Vowel )
+         + $( LC_ALL=C grep -o . Vowel | grep -c '^' ) ))

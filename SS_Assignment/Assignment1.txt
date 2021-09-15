@@ -1,0 +1,173 @@
+Assignment-1
+
+1. Write a shell script to calculate simple interest.
+
+ANSWER:-
+
+echo "Enter Principle : \c"
+read p
+echo "Enter Duration : \c"
+read n
+echo "Enter Interest rate : \c"
+read r
+
+echo "Simple Interest= $t "
+t= echo $p \* $n \* $r / 100 | bc
+
+Terminal OUTPUT:-
+
+kajal@kajal:~$ cd Desktop/SS_Assignment
+kajal@kajal:~/Desktop/SS_Assignment$ cd Assignment1
+kajal@kajal:~/Desktop/SS_Assignment/Assignment1$ sh que1.sh
+Enter Principle : 1000
+Enter Duration : 1
+Enter Interest rate : 3
+Simple Interest= 30
+
+
+2. Write a shell script to calculate salary from given basic.
+Salary = basic + dp + da +hra +ma –pf
+basic – to be taken as input
+dp - 50 % of basic
+da - 35 % of (basic + dp)
+hra - 8 % of (basic + dp)
+ma - 3 % of (basic + dp)
+pf - 10% of (basic + dp)
+
+ANSWER:-
+
+echo -e "Enter the value of Basic Salary: \c"
+read basic_sal
+if [ $basic_sal -ge 0 ]
+then
+  basic=$(expr 1.0*"$basic_sal" | bc)
+  dp=$(expr 0.5*"$basic"| bc)
+  temp=$(expr "$basic"+"$dp" | bc)
+  da=$(expr 0.35*"$temp" | bc)
+  hra=$(expr 0.08*"$temp" | bc)
+  ma=$(expr 0.03*"$temp" | bc)
+  pf=$(expr 0.1*"$temp" | bc)
+  salary=$(expr "$basic"+"$dp"+"$da"+"$hra"+"$ma"-" $pf" | bc)
+ 
+  echo "Your Basic Salary: $basic "
+  echo "Your DP:  $dp "
+  echo "Your DA:            $da"
+  echo "Your HRA:   $hra"
+  echo "Your MA:   $ma"
+  echo "Your PF:   $pf"
+  echo "                     ------------"
+  echo "Your Net Salary is  Rs. $salary "
+else
+  echo "Please enter a valid Basic Salary "
+fi
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment1$ sh que2.sh
+-e Enter the value of Basic Salary: 20000
+Your Basic Salary: 20000.0 
+Your DP:  10000.0 
+Your DA:            10500.00
+Your HRA:   2400.00
+Your MA:   900.00
+Your PF:   3000.0
+                     ------------
+Your Net Salary is  Rs. 40800.00 
+
+
+3. Write a shell script to calculate the average of a set of N number.
+
+ANSWER:-
+
+echo "Enter Size(N)"
+read N
+
+i=1
+sum=0
+
+echo "Enter Numbers"
+while [ $i -le $N ]
+do
+  read num               #get number
+  sum=$((sum + num))     #sum+=num
+  i=$((i + 1))
+done
+
+avg=$(echo $sum / $N | bc -l)
+
+echo $avg
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment1$ sh que3.sh
+Enter Size(N)
+5
+Enter Numbers
+10
+20
+30
+40
+50
+30.00000000000000000000
+
+
+4. Write a Unix shell script to find the sum of number to given number.
+e.g. if entered number is 5 then 1+2+3+4+5
+
+ANSWER:-
+
+echo -n "Enter Number: "
+read num
+i=1
+sum=0
+while test $i -le $num
+do
+        sum=`expr $sum + $i`
+        i=`expr $i + 1`
+done
+echo "SUM OF $num numbers : $sum "
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment1$ sh que4.sh
+Enter Number: 4
+SUM OF 4 numbers : 10 
+
+
+5. Write a shell script to perform like calculator. It should ask for the number and operand from the user.
+
+ANSWER:-
+
+echo "Enter Two numbers : "
+read a
+read b
+echo "Enter Choice :"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+echo "5. Modulus"
+read ch 
+case $ch in
+  1)c=`echo $a + $b | bc` ;;
+  2)c=`echo $a - $b | bc` ;;
+  3)c=`echo $a \* $b | bc` ;;
+  4)c=`echo $a / $b | bc` ;;
+  5)c=`echo $a % $b |bc` ;;
+esac
+echo "Result : $c"
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment1$ sh que5.sh
+Enter Two numbers : 
+3
+2
+Enter Choice :
+1. Addition
+2. Subtraction
+3. Multiplication
+4. Division
+5. Modulus
+3
+Result : 6

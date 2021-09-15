@@ -1,0 +1,124 @@
+Assignment-2
+1. Write a shell script to calculate the area of rectangle. It should take the value from the command line.
+ANSWER:-
+
+echo "Enter the width and height of rectangle: "
+read width
+read height
+echo "Area of the rectangle is:"
+expr $width \* $height
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment2$ sh que1.sh
+Enter the width and height of rectangle: 
+2
+3
+Area of the rectangle is:
+6
+kajal@kajal:~/Desktop/SS_Assignment/Assignment2$ 
+
+
+2. Write a shell script to take two numbers from command line and show result of dividing small number with bigger number. Also note that it should not accept zero or negative number. If user enter zero or negative number then it should prompt to input correct number after displaying proper message.
+
+ANSWER:-
+
+echo "Enter Num1"
+read Num1
+
+if [ $Num1 -lt 0 ]
+then
+    echo "Input Correct Number"
+fi
+
+echo "Enter Num2"
+read Num2
+
+if [ $Num2 -lt 0 ]
+then
+    echo "Input Correct Number"
+fi
+
+if [ $Num1 -gt $Num2 ]
+then
+    ans=$((Num1 / Num2))
+echo $ans
+
+else
+    ans=$((Num2 / Num1))
+echo $ans
+fi
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment2$ sh que2.sh
+Enter Num1
+2
+Enter Num2
+8
+4
+
+
+3. Write a Unix Shell Script which prints the following
+a. Current home directory.
+b. Current user name.
+c. The message "Today is :" with current date in MM/dd/yy format
+d. The message "No of users logged in :" with total no of current logged in users
+e. The message "Terminal :” With you own terminal number
+
+ANSWER:-
+
+echo "Current date is `date`"
+echo "user is $USER"
+echo "current directory is `pwd`"
+echo "No. of user logged in: \c"; who| wc -l
+echo "Terminal: `tty`"
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment2$ sh que3.sh
+Current date is Friday 03 September 2021 06:09:23 PM IST
+user is kajal
+current directory is /home/kajal/Desktop/SS_Assignment/Assignment2
+No. of user logged in: 1
+Terminal: /dev/pts/0
+kajal@kajal:~/Desktop/S
+
+
+4. Write a shell script to create a command line calculator.
+e.g. input : mycal 5 + 5 Result : 10 , input : mycal 5 / 5 result : 1
+
+ANSWER:-
+
+Terminal OUTPUT:-
+
+5. Write a shell script that that takes as command line input a number N and a Word. it then prints the word n times., one word per line
+
+ANSWER:-
+
+echo "Enter the number: "
+read N
+echo "Enter word"
+read w
+a=0
+echo "word is print $N time:"
+while [ $a -lt $N ]
+do 
+     echo "$w"
+     a=`expr $a + 1 | bc `
+done
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment2$ sh que5.sh
+Enter the number: 
+5
+Enter word
+KAJAL
+word is print 5 time:
+KAJAL
+KAJAL
+KAJAL
+KAJAL
+KAJAL
+

@@ -1,0 +1,119 @@
+Assignment-5
+
+1. Write a unix shell to add records to a file called item.dat The fields being itemcode, qty, sold and rate
+item_code to be generated
+qty_sold should be greater than 0
+rate between 100 to 10000
+
+ANSWER:-
+
+TerminalOUTPUT:-
+
+
+2. Write a Unix shell script which accepts a choice from the user and execute the corresponding option using case structure for above file structure. The format of the menu is
++ -> Addtion of record
+! -> Modification of records
+- -> Deletion of records
+s -> Quit
+
+
+ANSWER:-
+
+TerminalOUTPUT:-
+
+3. Write a shell scripts to generate random number. Allow user to guess 6 times to get the no. Print appropriate messages after each guess.
+e.g. Random generated is 10
+Users enters 4 message : To small
+User enters 14 then Messge to big
+
+ANSWER:-
+
+system_no=$RANDOM
+for ((i=1;i<=6;i++))
+do
+
+ 
+
+read -p "This is your chance number  $i ,Guess my number: " user_no
+if [ $user_no -eq $system_no ]
+then
+echo "Your guess is correct"
+else
+echo "Your guess is wrong"
+if [ $user_no -gt $system_no ]
+then
+        echo "Entered number is too biggg"
+else
+        echo "Entered number is too small"
+fi
+fi
+done
+
+4. Write a Unix Shell script that takes a login as a command line argument and reports to you when that person logs in.
+
+ANSWER:-
+
+uid=$1
+
+
+if [ $# -eq 0 ]
+then
+        echo "Enter logname"
+        read uid
+fi
+
+ 
+
+ch=`who | grep $uid -c`
+if [ $ch -eq 1 ]
+then
+        echo $uid "loging"
+else
+        echo "Logname user corrent not loging"
+fi
+
+TerminalOUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment5$ sh que4.sh
+Enter logname
+kajal
+kajal loging
+
+
+5. Write shell script to accept marks of of Unix, VB.Net,PHP and calculate the average of marks and display the message as follow :
+if Average then display
+- is 70 or above "Distinction"
+- is 60 <= 70 "First Class"
+- is 50 <= 60 "Second Class"
+- is 40 <= 50 "Third Class"
+- otherwise "Fail"
+
+ANSWER:-
+
+echo "Enter the Subject name:"
+read Unix VB PHP
+echo "Enter the marks of three subjects : "
+read m1 m2 m3 
+let total=$m1+$m2+$m3
+let avg= (total/5)
+echo student total marks:$total
+echo Student average :$avg
+if [ $avg -ge 70 ]
+then
+echo gread :"Distinction"
+elif [ $avg -ge 60 -a $avg -lt 70 ]
+then
+echo Gread :"First Class"
+    
+elif [ $avg -ge 50 -a $avg -lt 60 ]
+then
+echo Gread :"Second Class"
+elif [ $avg -ge 50 -a $avg -lt 50 ]
+then
+echo Gread :"Third Class"
+
+
+echo "Gread :F(fail) "
+fi
+
+

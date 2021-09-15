@@ -1,0 +1,33 @@
+Write a script that sets FOUR variables:
+
+MYUSERNAME
+MYPASSWORD
+STARTOFSCRIPT
+ENDOFSCRIPT
+
+Populate the first two with some default value and use command redirection to set the third and fourth value to the date/time of when the script was started and completed. Within the script, be sure to display the values to the terminal when run.
+
+
+
+
+
+#!/bin/bash
+MYUSERNAME="kajalfaye"
+MYPASSWORD="password123"
+STARTOFSCRIPT=`date`
+echo "My login name for this application is: $MYUSERNAME"
+echo "My login password for this application is: $MYPASSWORD"
+echo "I started this script at: $STARTOFSCRIPT"
+ENDOFSCRIPT=`date`
+echo "I ended this script at: $ENDOFSCRIPT"
+
+
+Terminal OUTPUT:-
+
+
+kajal@kajal:~/Desktop/Assignment2$ sh Assignment2.2.sh
+My login name for this application is: kajalfaye
+My login password for this application is: password123
+I started this script at: Sunday 08 August 2021 03:29:03 PM IST
+I ended this script at: Sunday 08 August 2021 03:29:03 PM IST
+kajal@kajal:~/Desktop/Assignment2$ 

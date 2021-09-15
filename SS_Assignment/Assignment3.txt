@@ -1,0 +1,96 @@
+Assignment-3
+1. Write a shell script to rename file having extension sh to exe.
+
+ANSWER:-
+
+clear
+echo "Enter first file name: "
+read f1
+if [ -f $f1 ]
+then
+    echo "Enter new extention: " 
+    read e
+
+    cp ${f1} ${f1}.$e
+
+    echo $f1"."$e" file is created "
+else
+    echo "File not Exist "
+fi
+
+Terminal OUTPUT:-
+
+Enter first file name: 
+demo
+Enter new extention: 
+exe
+demo.exe file is created 
+kajal@kajal:~/Desktop/SS_Assignment/Assignment3$ 
+
+
+2. Write a Unix shell script to accept 10 number and tell how many are +tive, -tive and zero. Also display the in ascending order.
+
+ANSWER:-
+
+Terminal OUTPUT:-
+
+3. Write a shell script to examine all the number from 1 to 999 and display all those number whose sum of cube of the digit is equal to the number. e.g. 371 = 3*3*3+7*7*7+1*1*1
+
+ANSWER:-
+
+n=1
+while [ $n -le 999 ]
+do
+sum=0
+p=$n
+while [ $p -ne 0 ]
+do
+
+tmp=`expr $p \% 10`
+
+p=`expr $p \/ 10`
+
+q=`expr $tmp \* $tmp \* $tmp`
+
+sum=`expr $sum + $q`
+
+done
+if [ $sum = $n ]
+then
+echo $n
+fi
+n=`expr $n + 1`
+done
+
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment3$ sh que3.sh
+1
+153
+370
+371
+407
+
+
+4. Write a shell script to display Date in different format along with Time.
+
+ANSWER:-
+
+echo `date`
+echo `date --date="2 years ago"`
+echo `date --date="yesterday"`
+
+Terminal OUTPUT:-
+
+kajal@kajal:~/Desktop/SS_Assignment/Assignment3$ sh que4.sh
+Friday 03 September 2021 06:04:03 PM IST
+Tuesday 03 September 2019 06:04:03 PM IST
+Thursday 02 September 2021 06:04:03 PM IST
+
+
+5. Write a shell script to accept fine number and display max and min value. If any two or three or four values are same then display proper message.
+
+ANSWER:-
+
+Terminal OUTPUT:-

@@ -1,0 +1,274 @@
+Write a script that assigns a variable that contains a list of all shell scripts (*.sh) in the current directory (command redirection). Using the 'for'statement from the course, iterate through that list of files and display the filename of each and cat out the contents to the terminal.
+
+
+
+#!/bin/bash
+echo "List all the shell scripts contents of the directory"
+SHELLSCRIPTS=`ls *.sh`
+for SCRIPT in $SHELLSCRIPTS; do
+ DISPLAY="`cat $SCRIPT`"
+ echo "File: $SCRIPT - Contents $DISPLAY"
+done
+
+Terminal OUTPUT:-
+
+kajal@kajal:~$ cd Desktop/Assignment2
+kajal@kajal:~/Desktop/Assignment2$ sh Assignment2.13.sh
+List all the shell scripts contents of the directory
+File: Assignment2.10.sh - Contents #!/bin/bash
+# demo of command line values passed in with our shell script
+USERNAME="kajalfaye"
+PASSWORD="password@123"
+echo "The following Username is: $USERNAME and Password is: $PASSWORD"
+File Was Read On: Sunday 08 August 2021 06:06:23 PM IST
+File: Assignment2.11.sh - Contents #!/bin/bash
+echo "Guess the Secret Number"
+echo "======================="
+echo ""
+echo "Enter a Number Between 1 and 5:"
+read GUESS
+if [ $GUESS -eq 3 ]
+ then
+ echo "You Guessed the Correct Number!"
+fi
+File: Assignment2.12.sh - Contents #!/bin/bash
+clear
+echo "Enter a number between 1 and 3:"
+read VALUE
+if [ "$VALUE" -eq "1" ] 2>/dev/null; then
+ echo "You entered #1"
+elif [ "$VALUE" -eq "2" ] 2>/dev/null; then
+ echo "You successfully entered #2"
+elif [ "$VALUE" -eq "3" ] 2>/dev/null; then
+ echo "You entered the 3rd number"
+else
+ echo "You didn't follow the directions!"
+fi
+File: Assignment2.13.sh - Contents #!/bin/bash
+# this is a demo of the for loop
+echo "List all the shell scripts contents of the directory"
+SHELLSCRIPTS=`ls *.sh`
+for SCRIPT in $SHELLSCRIPTS; do
+ DISPLAY="`cat $SCRIPT`"
+ echo "File: $SCRIPT - Contents $DISPLAY"
+done
+File: Assignment2.14.sh - Contents #!/bin/bash
+# demo of the case statement
+clear
+echo "MAIN MENU"
+echo "========="
+echo "1) Choice One"
+echo "2) Choice Two"
+echo "3) Choice Three"
+echo ""
+echo "Enter Choice: "
+read MENUCHOICE
+case $MENUCHOICE in
+ 1)
+ echo "Congratulations for Choosing the First Option";;
+ 2)
+ echo "Choice 2 Chosen";;
+ 3)
+ echo "Last Choice Made";;
+ *)
+ echo "You chose unwisely";;
+esac
+File: Assignment2.15.sh - Contents #!/bin/bash
+# while loop example
+echo "Enter the number of times to display the 'Hello World' message"
+read DISPLAYNUMBER
+COUNT=1
+while [ $COUNT -le $DISPLAYNUMBER ]
+do
+ echo "Hello World - $COUNT"
+ COUNT="`expr $COUNT + 1`"
+ done
+File: Assignment2.16.sh - Contents #!/bin/bash
+# simple file reading (non-binary) and displaying one line at a time
+echo "Enter a filename to read: "
+read FILE
+while read -r USER; do
+ echo "User Name: $USER"
+done < "$FILE"
+File: Assignment2.17.sh - Contents #!/bin/bash
+# demo of reading and writing to a file using a file descriptor
+echo "Enter a file name to read: "
+read FILE
+exec 5<>$FILE
+while read -r TEXT; do
+ echo "Text Name: $TEXT"
+done <&5
+echo "File Was Read On: `date`" >&5
+exec 5>&-
+File: Assignment2.18.sh - Contents #!/bin/bash
+# delimiter example using IFS
+echo "Enter filename to parse: "
+read FILE
+echo "Enter the Delimiter: "
+read DELIM
+IFS="$DELIM"
+while read -r CPU MEMORY DISK; do
+ echo "CPU: $CPU"
+ echo "Memory: $MEMORY"
+ echo "Disk: $DISK"
+done <"$FILE"
+File: Assignment2.19.sh - Contents #!/bin/bash
+# example of trapping events and limiting the shell stopping
+clear
+trap 'echo " - Please Press Q to Exit.."' SIGINT SIGTERM SIGTSTP
+while [ "$CHOICE" != "Q" ] && [ "$CHOICE" != "q" ]; do
+echo "MAIN MENU"
+echo "========="
+echo "1) Choice One"
+echo "2) Choice Two"
+echo "3) Choice Three"
+echo "Q) Quit/Exit"
+echo ""
+read CHOICE
+done
+File: Assignment2.1.sh - Contents #!/bin/bash
+clear
+echo "This script will give us environment information"
+echo "================================================"
+echo ""
+echo "Hello Username: $USER"
+echo ""
+echo "Your Home Directory is: $HOME"
+echo ""
+echo "Your History File Will Ignore: $HISTCONTROL"
+echo ""
+echo "Your Terminal Session Type is: $TERM"
+echo ""
+File: Assignment2.20.sh - Contents #!/bin/bash
+# demo of using error handling with exit
+echo "Change to a directory and list the contents"
+DIRECTORY=$1
+cd $DIRECTORY 2>/dev/null
+if [ "$?" = "0" ]; then
+echo "We can change into the directory $DIRECTORY, and here are the contents"
+echo "`ls -al`"
+else
+echo "Cannot change directories, exiting with an error and no listing"
+exit 111
+fi
+File: Assignment2.21.sh - Contents #!/bin/bash
+# this is a simple function example
+echo "Starting the function definition..."
+funcExample () {
+echo "We are now INSIDE the function..."
+}
+echo "But we did NOT call the function, yet..."
+echo "NOW let's call it"
+# call the function
+funcExample
+echo "...and back outside the function, continuing to the next command."
+echo "That's it"
+File: Assignment2.22.sh - Contents #!/bin/bash
+# global variable declaration
+GLOBALVAR="Globally Visible"
+# function definitions - start
+# sample function for function variable scope
+funcExample () {
+# local variable to the function
+LOCALVAR= "Locally Visible"
+echo "From within the function, the variable is: $LOCALVAR"
+}
+# functions definitions - stop
+# script - start
+clear
+echo "This step happens first..."
+echo ""
+echo "GLOBAL variable = $GLOBALVAR (before the function call)"
+echo "LOCALVAR variable = $LOCALVAR (before the function call)"
+echo ""
+echo "Calling Function - funcExample()"
+echo ""
+funcExample
+echo ""
+echo "Function has been called..."
+echo ""
+echo "GLOBAL variable = $GLOBALVAR (after the function call)"
+echo "LOCALVAR variable = $LOCALVAR (after the function call)"
+File: Assignment2.23.sh - Contents #!/bin/bash
+# global variable
+USERNAME=$1
+# function definitions - start
+# calculate age in days
+funcAgeInDays () {
+echo "Hello $USERNAME, You are $1 Years Old."
+echo "That makes you approximately `expr $1 \* 365` days old..."
+}
+# function definitions - stop
+# scrip - start
+clear
+echo "Enter Your Age: "
+read USERAGE
+# calculate the number of days
+funcAgeInDays $USERAGE
+File: Assignment2.2.sh - Contents #!/bin/bash
+MYUSERNAME="kajalfaye"
+MYPASSWORD="password123"
+STARTOFSCRIPT=`date`
+echo "My login name for this application is: $MYUSERNAME"
+echo "My login password for this application is: $MYPASSWORD"
+echo "I started this script at: $STARTOFSCRIPT"
+ENDOFSCRIPT=`date`
+echo "I ended this script at: $ENDOFSCRIPT"
+File: Assignment2.3.sh - Contents #!/bin/bash
+# This line is intended to be used as a general description of the script
+# and anything that it does
+clear # clears the screen
+# MYUSERNAME="KAJAL" # the username for this application
+MYUSERNAME="JERRY" # new username added later
+echo "We are using the default user called: $MYUSERNAME" # display to the console
+DATETIMESTAMP=`date`
+echo "This is when the script was run: $DATETIMESTAMP" # this is the timestamp of run
+File: Assignment2.4.sh - Contents #!/bin/bash
+# redirect to /dev/null example
+echo "This is displaying on the console"
+echo "This is going into the black hole" >> /dev/null
+File: Assignment2.5.sh - Contents #!/bin/bash
+# this is to show exit status types
+set -e
+expr 1 + 5
+echo $?
+rm demo.sh
+echo $?
+expr 10 + 10
+echo $?
+File: Assignment2.6.sh - Contents #!/bin/bash
+# expression evaluation
+expr 2 + 3
+expr 2 + 3 \* 4
+expr \( 2 + 3 \) \* 4
+File: Assignment2.7.sh - Contents #!/bin/bash
+alias TODAY="date"
+TODAYSDATE=`date`
+echo "Today's Date: $TODAYSDATE"
+A=`TODAY`
+echo "With Alias, TODAY is: $A"
+File: Assignment2.8.sh - Contents #!/bin/bash
+# interactive script for user input
+echo "Enter Your First Name: "
+read FIRSTNAME
+echo "Enter Your Last Name: "
+read LASTNAME
+echo ""
+echo "Your Full Name is: $FIRSTNAME $LASTNAME"
+echo ""
+echo "Enter Your Age: "
+read USERAGE
+echo "In 10 Years, You will be `expr $USERAGE + 10` years old."
+
+File Was Read On: Sunday 08 August 2021 06:03:31 PM IST
+File: Assignment2.9.sh - Contents #!/bin/bash
+SERVERLIST=('websrv01' 'websrv02' 'websrv03' 'websrv04')
+COUNT=0
+for INDEX in ${SERVERLIST[@]}; do
+echo "Processing Server: ${SERVERLIST[COUNT]}"
+COUNT="`expr $COUNT + 1`"
+done
+File: demo.sh - Contents #!/bin/bash
+
+echo "This is demo screen"
+kajal@kajal:~/Desktop/Assignment2$ 
